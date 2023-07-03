@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/depart.css' %}">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h1 class="text-warning">Model hospital</h1></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav" style="padding: 10px;">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white " href="#">Aboutus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'signuppage' %}">Signin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'loginpage' %}">login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br><br>
+    <div class="container">
+        <h1 class="text-center text-success">Add Nurses Lists</h1>
+        <div class="row" style="margin-top: 40px;">
+            <div class="col-lg-6">
+                <img src="{% static 'images/image2.webp' %}" alt="#" style="width: 500px; height: 350px;">
+            </div>
+            <div class="col-lg-6">
+                <p style="margin-top: 40px;">Nurses plan and provide medical and nursing care to patients in hospital,
+                    at home or in other settings. A caring and compassionate nature, and the ability to deal with
+                    emotionally charged and pressured situations are important traits in a nurse.</p>
+                <form action="{% url 'add_nurse_details' %}" method="post" enctype="multipart/form-data"
+                    style="width: 70%; margin-top: 70px;">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" name="name" placeholder="Name"><br>
+                    <input type="text" class="form-control" name="adres" placeholder="Address"><br>
+                    <input type="number" class="form-control" name="age" placeholder="Age"><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                        <label class="form-check-label" for="male">MALE</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                        <label class="form-check-label" for="female">FEMALE</label>
+                    </div><br>
+                    <input type="number" class="form-control" name="phnum" placeholder="Phone Number"><br>
+
+                    <div class="butto-class">
+                        <button type="submit" class="btn">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

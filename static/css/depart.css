@@ -1,0 +1,16 @@
+.butto-class button{
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background: #198754;
+    color: #fff;
+    transition: all ease .55s;
+}
+.butto-class button:hover{
+    background: #fff;
+    color: #111;
+    border: 2px solid #111;
+}
+input{
+    background-color: #198754;
+}

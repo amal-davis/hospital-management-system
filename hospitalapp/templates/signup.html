@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="/vendor/intl-tel-input/build/css/intlTelInput.css" />
+        <script src="/vendor/intl-tel-input/build/js/intlTelInput.min.js"></script> 
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"></script>
+
+
+
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/tel.css' %}">
+        
+        
+        <title>Signup</title>
+</head>
+<style>
+    
+</style>
+<body>
+    <header>
+      <a href="#" class="logo">
+        <img src="{% static 'images/logo.webp' %}" alt="Logo" style="width: 80px; height: 60px;">
+        MODEL
+    </a>
+        <ul class="navbar">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'signuppage' %}">Signup</a></li>
+            <li><a href="{% url 'loginpage' %}">Login</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'Contact' %}">Contact</a></li>
+            
+        </ul>
+
+        <div class="header-icons">
+            
+            <a href="#"><i class='bx bx-user'></i></a>
+            <a href="#"><i class='bx bx-heart'></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    <div class="container" style="margin-top: 140px;">
+        {% for message in messages %}
+        <h5>
+            <div class="alert alert-danger mt-5">
+                {{ message }}
+            </div>
+        </h5>
+        {% endfor %}
+    
+    </div>
+    <div class="container-fluid">
+        
+        <div class="text">
+            <h1 class="text-center" style="color: #685f78;">SIGN UP</h1>
+        </div>
+        <form action="{% url 'user_create' %}"  method="post" class="needs-validation" id="contactForm" enctype="multipart/form-data" style="width: 350px; margin: auto;">
+            {% csrf_token %}  
+
+            <label for="validationCustom01" class="form-label text-center">FIRST NAME</label><br>
+            <input type="text" name="fname" class="form-control" id="validationCustom01"  required ><br>
+            <label for="validationCustom01" class="form-label text-center">LAST NAME</label><br>
+            <input type="text" name="lname" class="form-control" id="validationCustom01"  required ><br>
+            <label for="validationCustom01" class="form-label text-center">USER NAME</label><br>
+            <input type="text" name="uname" class="form-control" id="input-username"  required ><br>
+            
+            <label for="validationTooltipUsername" class="form-label">EMAIL</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+      <input type="email" name="email" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required><br>
+      </div><br>
+      
+      
+      <label for="validationTooltipUsername" class="form-label">PASSWORD</label>
+      <input type="password" class="form-control " id="password" minlength="8" name="password" placeholder="Password"  required> 
+      <small>(At least 8 character,1 capital,1 digit,1 special character)</small><br>     
+       <div class="generate" style="margin-top: 10px;">
+      <button type="button" class="btn btn-outline-dark" onclick="generatePassword()">GENERATE PASSWORD</button>     
+      </div>  
+      
+      
+      <label for="validationCustom01" class="form-label text-center" style="margin-top: 10px;">PHONE NUMBER</label><br>
+      <input type="tel" name="phnum" id="phone" class="form-control"><span id="valid-msg" class="hide">Valid</span>
+      <span id="error-msg" class="hide">Invalid number</span><br> <br>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+        <label class="form-check-label" for="male">MALE</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+        <label class="form-check-label" for="female">FEMALE</label>
+      </div><br> 
+      <label for="validationCustom01" class="form-label text-center">AGE</label><br>
+      <input type="number" name="A_ge" class="form-control" id="validationCustom01" required ><br>
+      <label for="validationCustom01" class="form-label text-center">ADDRESS</label><br>
+      <input type="text" name="adres" class="form-control" id="validationCustom01" required ><br>
+      <label for="validationCustom01" class="form-label text-center">UPLOAD YOUR PHOTO</label><br>
+      <input type="file" name="files" accept="image/*" class="form-control"><br>
+      <div class="button-cls">
+        <button type="submit" id="submit" class="btn btn-md text-center ">Submit</button>
+    </div>
+    <p style="margin-top: 20px;">Already Have An Account?<a href="{% url 'loginpage' %}">Login</a> </p>
+
+        </form>
+    </div>
+    <section class="contact" id="contact">
+        <div class="main-contact">
+         <div class="contact-content">
+            <a href="#" class="logo">
+                <img src="{% static 'images/logo.webp' %}" alt="Logo" style="width: 80px; height: 60px;">
+            </a>
+             <li><a href="#">Facebook</a></li>
+             <li><a href="#">Instagram</a></li>
+             <li><a href="#">Twitter</a></li>
+         </div>
+         <div class="contact-content">
+                  <li><a href="#home">Home</a></li>
+                 <li><a href="#categories">Categories</a></li>
+                 <li><a href="#courses">Courses</a></li>
+                 <li><a href="#about">About Us</a></li>
+                 <li><a href="#contact">Contact</a></li>
+         </div>
+         <div class="contact-content">
+             <li><a href="#">Profile</a></li>
+             <li><a href="#">Login</a></li>
+             <li><a href="#">Register</a></li>
+             <li><a href="#">Instructor</a></li>
+             <li><a href="#">Dashboard</a></li>
+         </div>
+         <div class="contact-content">
+             <li><a href="#">San francisco <br> California, CA 94108</a></li>
+             <li><a href="#">amald416@gmail.com</a></li>
+             <li><a href="#">7025306368</a></li>
+             
+         </div>
+        </div>
+         </section>
+         <div class="last-text">
+             <p>© Amal davis. All rights reserved</p>
+         </div>
+    
+</body>
+
+<script>
+    let menu = document.querySelector('#menu-icon');
+    let navlist = document.querySelector('.navbar');
+
+    menu.onclick = () => {
+        menu.classList.toggle('bx-x');
+        navlist.classList.toggle('open');
+    };
+    window.onscroll = () => {
+        menu.classList.remove('bx-x');
+        navlist.classList.remove('open')
+    };
+
+    
+var telInput = $("#phone"),
+  errorMsg = $("#error-msg"),
+  validMsg = $("#valid-msg");
+
+// initialise plugin
+telInput.intlTelInput({
+
+  allowExtensions: true,
+  formatOnDisplay: true,
+  autoFormat: true,
+  autoHideDialCode: true,
+  autoPlaceholder: true,
+  defaultCountry: "auto",
+  ipinfoToken: "yolo",
+
+  nationalMode: false,
+  numberType: "MOBILE",
+  //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+  preferredCountries: ['sa', 'ae', 'qa','om','bh','kw','ma'],
+  preventInvalidNumbers: true,
+  separateDialCode: true,
+  initialCountry: "auto",
+  geoIpLookup: function(callback) {
+  $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+    var countryCode = (resp && resp.country) ? resp.country : "";
+    callback(countryCode);
+  });
+},
+   utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
+});
+
+var reset = function() {
+  telInput.removeClass("error");
+  errorMsg.addClass("hide");
+  validMsg.addClass("hide");
+};
+
+// on blur: validate
+telInput.blur(function() {
+  reset();
+  if ($.trim(telInput.val())) {
+    if (telInput.intlTelInput("isValidNumber")) {
+      validMsg.removeClass("hide");
+    } else {
+      telInput.addClass("error");
+      errorMsg.removeClass("hide");
+    }
+  }
+});
+
+// on keyup / change flag: reset
+telInput.on("keyup change", reset);
+
+function generatePassword(){
+    var username = document.getElementById('input-username').value;
+    var password = "";
+
+    if (username.length >=4){
+
+      var firstFourLetter = username.substring(0,4);
+      var capitalizedFirstLetter = firstFourLetter.charAt(0).toUpperCase();
+      var remainingLetters = firstFourLetter.substring(1);
+      var randomDigits = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+
+      password = capitalizedFirstLetter + remainingLetters + "@" + randomDigits;
+    }
+
+    document.getElementById('password').value = password;
+
+  }
+</script>
+
+</html>

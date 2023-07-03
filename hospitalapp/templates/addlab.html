@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/xray.css' %}">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="{% static 'images/logo.webp' %}" alt="Logo" style="width: 80px; height: 60px;">
+            MODEL
+        </a>
+        <ul class="navbar">
+            <li><a href="{% url 'adminpage' %}">Home</a></li>
+            <li><a href="{% url 'signuppage' %}">Signup</a></li>
+            <li><a href="{% url 'loginpage' %}">Login</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="{% url 'Contact' %}">Contact</a></li>
+            
+        </ul>
+
+        <div class="header-icons">
+            
+            <a href="{% url 'show_profile' %}"><i class='bx bx-user'></i></a>
+            <a href="#"><i class='bx bx-heart'></i></a>
+            <li><a href="{% url 'logout' %}" class="text-white">Logout</a></li>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    <div class="container" style="margin-top: 140px;">
+        <h1 class="text-center">Add Lab Details</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{% static 'images/image18.avif' %}" alt="#" style="width: 500px; height: 350px;">
+            </div>
+            <div class="col-lg-6">
+                <p style="margin-top: 40px;">The clinical laboratory of a hospital utilizes samples of fluids or tissues
+                    from patients to identify evidence of disease or medical conditions. The space is organized into
+                    divisions such as anatomic pathology, clinical chemistry, hematology, genetics, microbiology,
+                    phlebotomy, and the blood bank</p>
+                <form action="{% url 'add_lab_details' %}" method="post" enctype="multipart/form-data" style="width: 70%; margin-top: 70px;">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" name="lname" placeholder="Add Lab details"><br>
+                    <div class="butto-class">
+                        <button type="submit" class="btn">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <section class="contact" id="contact">
+        <div class="main-contact">
+         <div class="contact-content">
+            <a href="#" class="logo">
+                <img src="{% static 'images/logo.webp' %}" class="img-fluid" alt="Logo" style="width: 80px; height: 60px;">
+            </a>
+             <li><a href="#">Facebook</a></li>
+             <li><a href="#">Instagram</a></li>
+             <li><a href="#">Twitter</a></li>
+         </div>
+         <div class="contact-content">
+                  <li><a href="#home">Home</a></li>
+                 <li><a href="#categories">Categories</a></li>
+                 <li><a href="#courses">Courses</a></li>
+                 <li><a href="#about">About Us</a></li>
+                 <li><a href="#contact">Contact</a></li>
+         </div>
+         <div class="contact-content">
+             <li><a href="#">Profile</a></li>
+             <li><a href="#">Login</a></li>
+             <li><a href="#">Register</a></li>
+             <li><a href="#">Instructor</a></li>
+             <li><a href="#">Dashboard</a></li>
+         </div>
+         <div class="contact-content">
+             <li><a href="#">San francisco <br> California, CA 94108</a></li>
+             <li><a href="#">amald416@gmail.com</a></li>
+             <li><a href="#">7025306368</a></li>
+             
+         </div>
+        </div>
+         </section>
+         <div class="last-text">
+             <p>© Amal davis. All rights reserved</p>
+         </div>
+</body>
+<script>
+    let menu = document.querySelector('#menu-icon');
+    let navlist = document.querySelector('.navbar');
+
+    menu.onclick = () => {
+        menu.classList.toggle('bx-x');
+        navlist.classList.toggle('open');
+    };
+    window.onscroll = () => {
+        menu.classList.remove('bx-x');
+        navlist.classList.remove('open')
+    };
+</script>
+
+</html>

@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=MuseoModerno:wght@200;300;400;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+:root{
+    --bg-color:#ffffff;
+    --text-color:#22100d;
+    --second-color:#685f78;
+    --main-color:#f66962;
+    --bg-font:3.8rem;
+    --h2-font:2.6rem;
+    --p-font:1.1rem;
+}
+body{
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+header{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 30px 9%;
+    transition: all .40s ease;
+    background: #685f78;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 33px;
+    font-weight: 700;
+}
+.logo h1{
+font-size: var(--h2-font);
+vertical-align: middle;
+margin-right: 12px;
+}
+.navbar{
+    display: flex;
+}
+.navbar a{
+    color:#fff;
+    font-weight: 600;
+    font-size: var(--p-font);
+    padding: 10px 22px;
+    transition: all .40s ease;
+}
+a{
+    text-decoration: none;
+}
+.navbar a:hover{
+    color: var(--main-color);
+}
+.header-icons{
+    display: flex;
+    align-items: center;
+}
+.header-icons i{
+    margin-left: 10px;
+    font-size: 24px;
+    color: #fff;
+    transition: all .40s ease;
+    margin-right: 15px;
+}
+.header-icons i:hover{
+    transform: scale(1.2);
+    color: var(--main-color);
+}
+#menu-icon{
+    font-size: 34px;
+    color: var(--text-color);
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+.butto-class button{
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background: var(--second-color);
+    color: #fff;
+    transition: all ease .55s;
+}
+.butto-class button:hover{
+    background: #fff;
+    color: #111;
+    border: 2px solid #111;
+}
+.contact{
+    padding: 60px 13%;
+    background: var(--second-color);
+  }
+  .main-contact{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    gap: 2rem;
+  }
+  .contact-content .logo{
+    height: auto;
+    width: 160px;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  .contact-content li{
+    margin-bottom: 18px;
+  }
+  .contact-content li a{
+    display: block;
+    color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all .40s ease;
+  }
+  .contact-content li a:hover{
+    transform: translateX(10px);
+    color: var(--main-color);
+  }
+  .last-text p{
+    text-align: center;
+    padding: 12px;
+    background: var(--second-color);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+@media (max-width:1025px){
+    #menu-icon{
+        display: block;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        top: -1000px;
+        width: 300px;
+        height: 110vh;
+        background:#685f78 ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 170px 30px;
+        transition: all ease .40s;
+    }
+    .navbar a{
+        display: block;
+        margin: 1.3rem 0;
+        color: var(--bg-color);
+
+    }
+    .navbar a:hover{
+        color: var(--bg-color);
+        transform: translateY(-5px);
+    }
+    .navbar.open{
+        top: 0;
+    }
+}
+
+
+

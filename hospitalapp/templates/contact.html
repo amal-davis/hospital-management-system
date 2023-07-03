@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+    <title>Contact Us</title>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="{% static 'images/logo.webp' %}" alt="Logo" style="width: 80px; height: 60px;">
+            MODEL
+        </a>
+        <ul class="navbar">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'signuppage' %}">Signup</a></li>
+            <li><a href="{% url 'loginpage' %}">Login</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'Contact' %}">Contact</a></li>
+           
+        </ul>
+
+        <div class="header-icons">
+
+            <a href="#"><i class='bx bx-user'></i></a>
+            <a href="#"><i class='bx bx-heart'></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+       <center>
+        <h2>Thanks {{ message_name }}</h2>
+        <p>We recieved your email and we will respond shortily...</p>
+       </center>
+       
+    <div class="container" style="margin-top: 140px;">
+        <h1 class="text-center" style="color: #685f78;"> CONTACT US </h1>
+        <div class="row">
+            <div class="col-lg-6 pt-5">
+                <img src="{% static 'images/contact1.avif' %}" alt="contact image" class="img-fluid">
+            </div>
+            <div class="col-lg-6 pt-5" style="margin-top: 140px;">
+                <form class="row g-3 needs-validation" novalidate action="{% url 'contact_details' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="col-md-4">
+                        <label for="validationCustom01" class="form-label">NAME</label>
+                        <input type="text" name="message_name" class="form-control" id="validationCustom01" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustom02" class="form-label">ADDRESS</label>
+                        <input type="text" name="message_adres" class="form-control" id="validationCustom02" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustomUsername" class="form-label">EMAIL</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="text" name="messaage_email" class="form-control" id="validationCustomUsername"
+                                aria-describedby="inputGroupPrepend" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustom02" class="form-label">REMARKS*</label>
+                        <input type="text" name="message" class="form-control" id="validationCustom02" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustom02" class="form-label">PHONE NUMBER</label>
+                        <input type="tel" name="message_phnnum" class="form-control" id="validationCustom02" required>
+                    </div>
+                    <div class="butto-class">
+                        <button class="btn" type="submit">SUBMIT</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 pt-5">
+                <h3 style="color: #685f78;">ADDRESS</h3>
+                <p style="font-size: 18px;">Model Hospital. <br>
+                    Special Economic Zone (SEZ)br
+                    Thrissur Kurrapam Road P.O, <br>
+                    Thrissur - 68001, Kerala, India. <br></p>
+            </div>
+            <div class="col-lg-6 pt-5">
+                <p style="font-size: 18px;"> <strong> General Enquiry: +91 480 22 77 11 7 <br>
+
+                        Emergency Enquiry: +91 480 2733 555 <br>
+
+                        HR Enquiry: +91 480 2733 999 <br>
+
+                        Email: info@modelhospital.com </strong> <br></p>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 40px;">
+        <h1 class="text-center" style="color: #685f78;"><i class="fa-solid fa-location-dot"></i>LOCATION</h1>
+        <div class="row" style="margin-top: 70px;">
+            <div class="col-lg-6 pt-5">
+                <p>A place's absolute location is its exact place on Earth, often given in terms of latitude and
+                    longitude. , the State Building is located at 40.7 degrees north (latitude), 74 degrees west
+                    (longitude). It sits at the intersection of 33rd Street and Fifth Avenue in Thrissur, Kerala, India.
+                </p>
+            </div>
+            <div class="col-lg-6 pt-5">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.780578340926!2d76.20803537421942!3d10.517941063909985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ee479cabebd3%3A0xe4e1ec9954642141!2sKSRTC%20Rd%2C%20Veliyannur%2C%20Thrissur%2C%20Kerala!5e0!3m2!1sen!2sin!4v1686984409798!5m2!1sen!2sin"
+                    width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+    <section class="contact" id="contact">
+        <div class="main-contact">
+         <div class="contact-content">
+            <a href="#" class="logo">
+                <img src="{% static 'images/logo.webp' %}" alt="Logo" style="width: 80px; height: 60px;">
+            </a>
+             <li><a href="#">Facebook</a></li>
+             <li><a href="#">Instagram</a></li>
+             <li><a href="#">Twitter</a></li>
+         </div>
+         <div class="contact-content">
+                  <li><a href="#home">Home</a></li>
+                 <li><a href="#categories">Categories</a></li>
+                 <li><a href="#courses">Courses</a></li>
+                 <li><a href="#about">About Us</a></li>
+                 <li><a href="#contact">Contact</a></li>
+         </div>
+         <div class="contact-content">
+             <li><a href="#">Profile</a></li>
+             <li><a href="#">Login</a></li>
+             <li><a href="#">Register</a></li>
+             <li><a href="#">Instructor</a></li>
+             <li><a href="#">Dashboard</a></li>
+         </div>
+         <div class="contact-content">
+             <li><a href="#">San francisco <br> California, CA 94108</a></li>
+             <li><a href="#">amald416@gmail.com</a></li>
+             <li><a href="#">7025306368</a></li>
+             
+         </div>
+        </div>
+         </section>
+         <div class="last-text">
+             <p>© Amal davis. All rights reserved</p>
+         </div>
+</body>
+<script>
+    let menu = document.querySelector('#menu-icon');
+    let navlist = document.querySelector('.navbar');
+
+    menu.onclick = () => {
+        menu.classList.toggle('bx-x');
+        navlist.classList.toggle('open');
+    };
+    window.onscroll = () => {
+        menu.classList.remove('bx-x');
+        navlist.classList.remove('open')
+    };
+
+
+
+
+</script>
+
+</html>

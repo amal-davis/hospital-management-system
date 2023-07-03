@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/depart.css' %}">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-success bg-success">
+        <a class="navbar-brand" href="">
+            <div class="container-fluid">
+                <img src="" alt="Logo" width="40" height="35" class="d-inline-block align-text-top">
+                <span class="text-white">HOSPITAL MANAGMENT SYSTEM</span>
+        </a>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link mx-3 text-white" href="{% url 'adminpage' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-3 text-white" href="{% url 'signuppage' %}">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-3 text-white" href="{% url 'logout' %}">Logout</a>
+            </li>
+        </ul>
+        </div>
+    </nav><br><br>
+    <div class="container">
+        <h1 class="text-center">Add Doctors Lists</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{% static 'images/image20.avif' %}" alt="#" style="width: 500px; height: 350px;">
+            </div>
+            <div class="col-lg-6">
+                <p style="margin-top: 40px;">They diagnose, educate, and treat patients to ensure that they have the
+                    best possible care. A few of the main duties of a doctor are performing diagnostic tests,
+                    recommending specialists for patients, document patient's medical history, and educating patients.
+                    They also have to administer vaccines and other treatments.</p>
+                <form action="{% url 'add_doctor' %}" method="post" enctype="multipart/form-data"
+                    style="width: 70%; margin-top: 70px;">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" name="name" placeholder="Name"><br>
+                    <input type="text" class="form-control" name="adres" placeholder="Address"><br>
+                    <input type="number" class="form-control" name="age" placeholder="Age"><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                        <label class="form-check-label" for="male">MALE</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                        <label class="form-check-label" for="female">FEMALE</label>
+                    </div><br>
+                    <input type="number" class="form-control" name="phnum" placeholder="Phone Number"><br>
+                    <label for="validationCustom01" class="form-label text-center">Select Department</label><br>
+                    <select class="form-control" name="select" id="qwerty">
+                        {% for i in dept %}
+
+                        <option value="{{ i.id }}">{{ i.department_name }}</option>
+
+                        {% endfor %}
+                    </select><br>
+                    <label for="validationCustom01" class="form-label text-center">UPLOAD YOUR PHOTO</label><br>
+                     <input type="file" name="files" accept="image/*" class="form-control"><br>
+                    <div class="butto-class">
+                        <button type="submit" class="btn">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
